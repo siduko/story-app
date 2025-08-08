@@ -67,7 +67,7 @@
 .research-block { @apply bg-secondary border rounded-xl p-2.5; }
 .research-block .row { @apply flex gap-2; }
 
-.images-grid { @apply grid [grid-template-columns:repeat(auto-fill,88px)] gap-2 mt-2; }
+.images-grid { @apply grid [grid-template-columns:repeat(auto-fill,theme('spacing.22'))] gap-2 mt-2; }
 .image-thumb { @apply w-22 h-22 rounded-lg border bg-cover bg-center; }
 
 .main-pane { @apply overflow-hidden flex flex-col; }
