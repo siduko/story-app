@@ -43,6 +43,7 @@ export default function ProjectPage() {
   const [focusMode, setFocusMode] = useState(false);
   const [mainTab, setMainTab] = useState('draft');
   const [sidebarTab, setSidebarTab] = useState('characters');
+  const [confirm, setConfirm] = useState(null); // { type: 'scene'|'character', id, title }
 
   useEffect(() => {
     if (!id) return;
@@ -75,8 +76,6 @@ export default function ProjectPage() {
   }, []);
 
   if (!project) return null;
-
-  const [confirm, setConfirm] = useState(null); // { type: 'scene'|'character', id, title }
 
   return (
     <main id="projectView" className="view">
