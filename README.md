@@ -59,3 +59,8 @@ Tech: Next.js 14 (App Router), React 18, Tailwind CSS, shadcn/ui.
 ### Styling
 - Tailwind configured via `tailwind.config.js` and `postcss.config.js`.
 - shadcn/ui components live in `components/ui/*` and use CSS variables defined in `app/globals.css`.
+
+## Deployment
+
+This project uses a GitHub Action workflow to deploy to [Vercel](https://vercel.com/) whenever changes are pushed to the `main` branch.
+To enable deployments, add the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` secrets in your repository settings.
