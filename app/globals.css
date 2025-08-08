@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.5rem;
+  }
+
+  * { @apply border-border; }
+  html, body { height: 100%; }
+  body { @apply bg-gradient-to-b from-[#0f1115] to-[#0e1320] text-foreground; }
+}
+
+/* Utility classes for the app structure that Tailwind composes */
+.app { @apply flex flex-col min-h-screen; }
+.app-header { @apply flex items-center justify-between px-4 py-3 border-b bg-secondary/40; }
+.app-header h1 { @apply m-0 text-base tracking-wide; }
+.header-actions { @apply flex gap-2; }
+.view { @apply flex-1 overflow-hidden; }
+
+.projects-grid { @apply p-4 grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]; }
+.project-card { @apply bg-card border rounded-xl p-3 flex flex-col gap-2; }
+.project-card-title { @apply font-semibold; }
+.project-card-meta { @apply text-xs text-muted-foreground; }
+.project-card-actions { @apply flex gap-2; }
+
+.project-topbar { @apply flex items-center gap-2 px-3 py-2 border-b bg-secondary/40; }
+.project-title { @apply text-lg font-semibold bg-transparent outline-none w-full; }
+.project-title-wrap { @apply flex-1; }
+.topbar-actions { @apply flex gap-2; }
+
+.workspace { @apply grid min-h-[calc(100vh-58px)] grid-cols-[260px_1fr_320px]; }
+.sidebar { @apply border-r bg-secondary/40 overflow-auto; }
+.sidebar-tabs { @apply grid grid-cols-2; }
+.sidebar .tab { @apply border-0 py-2 px-3 bg-transparent border-b; }
+.sidebar .tab.active { @apply bg-secondary; }
+.sidebar-content { @apply p-2; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.list-header { @apply flex items-center justify-between mb-2; }
+.item-list { @apply list-none p-0 m-0 flex flex-col gap-1.5; }
+.item-list li { @apply bg-secondary border rounded-lg p-2; }
+.character-item { @apply flex items-center justify-between gap-2; }
+
+.research-sections { @apply flex flex-col gap-3; }
+.research-block { @apply bg-secondary border rounded-xl p-2.5; }
+.research-block .row { @apply flex gap-2; }
+
+.images-grid { @apply grid [grid-template-columns:repeat(auto-fill,88px)] gap-2 mt-2; }
+.image-thumb { @apply w-22 h-22 rounded-lg border bg-cover bg-center; }
+
+.main-pane { @apply overflow-hidden flex flex-col; }
+.main-tabs { @apply flex; }
+.main-tabs .tab { @apply border-0 py-2 px-3 bg-transparent border-b; }
+.main-tabs .tab.active { @apply bg-secondary; }
+.main-panel { @apply hidden h-full overflow-auto p-3; }
+.main-panel.active { @apply block; }
+
+.scenes-draft { @apply flex flex-col gap-3 content-start; }
+.scene-block { @apply bg-card border rounded-xl p-2; }
+.scene-header { @apply flex gap-2 items-center; }
+.scene-title { @apply flex-1 bg-transparent border border-dashed rounded-md px-2 py-1; }
+.scene-editor { @apply min-h-[120px] p-2 bg-background border rounded-md outline-none; }
+.scene-editor p { @apply my-2; }
+.scene-editor .active-paragraph { @apply bg-blue-500/10 outline outline-1 outline-primary; }
+.attached-images { @apply mt-2; }
+
+.corkboard { @apply grid [grid-template-columns:repeat(auto-fill,minmax(180px,1fr))] gap-3 content-start; }
+.scene-card { @apply bg-[#0b0f19] border rounded-xl p-3 min-h-[120px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]; }
+.scene-card-title { @apply font-semibold outline-none; }
+.scene-card-meta { @apply text-xs text-muted-foreground mt-1.5; }
+
+.detail-pane { @apply border-l bg-secondary/40 overflow-auto p-2.5; }
+.detail-panel.hidden { display: none; }
+.detail-header { @apply flex items-center justify-between; }
+.form-grid { @apply grid grid-cols-2 gap-2; }
+.form-grid label { @apply flex flex-col gap-1 text-xs text-muted-foreground; }
+.images-row { @apply flex flex-wrap gap-2; }
+
+.droppable { @apply border border-dashed border-transparent p-1.5 rounded-md; }
+.droppable.dragover { @apply border-accent bg-accent/20; }
+
+.focus-mode .workspace > :not(.main-pane) { filter: blur(3px) brightness(0.7); pointer-events: none; }
+.focus-mode .main-pane > :not(.main-panel.active) { filter: blur(3px) brightness(0.7); pointer-events: none; }
+.focus-mode .scene-editor p { opacity: 0.35; }
+.focus-mode .scene-editor .active-paragraph { opacity: 1; filter: none; }
+
+@media (max-width: 1100px) {
+  .workspace { grid-template-columns: 0 1fr 0; }
+  .sidebar { display: none; }
+  .detail-pane { display: none; }
+}
